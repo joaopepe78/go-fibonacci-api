@@ -69,7 +69,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: image
-          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/go-math-api:${{ needs.build-test-docker.outputs.short_sha }}
+          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/go-fibonacci-api:${{ needs.build-test-docker.outputs.short_sha }}
           format: table
           exit-code: 0
           ignore-unfixed: true
@@ -84,7 +84,7 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           event-type: run-api-tests
-          client-payload: '{"image": "${{ secrets.DOCKERHUB_USERNAME }}/go-math-api", "tag":"${{ needs.build-test-docker.outputs.short_sha }}"}'
+          client-payload: '{"image": "${{ secrets.DOCKERHUB_USERNAME }}/go-fibonacci-api", "tag":"${{ needs.build-test-docker.outputs.short_sha }}"}'
 
   update-k8s-manifest:
       needs:
